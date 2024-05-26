@@ -1,10 +1,11 @@
-import Card from "./Card";
-import Header from "./Header";
-import Footer from "./Footer";
-import Food from "./Food";
-import Button from "../Button/Button";
-import Student from "./Student.jsx"
-import UserGreeting from "./UserGreeting.jsx";
+// import Card from "./Card";
+// import Header from "./Header";
+// import Footer from "./Footer";
+// import Food from "./Food";
+// import Button from "../Button/Button";
+// import Student from "./Student.jsx"
+// import UserGreeting from "./UserGreeting.jsx";
+import List from "./List";
 
 function App() {
   return(
@@ -20,10 +21,11 @@ function App() {
       <Student name="Squidward" age={50} isStudent={false} />
       <Student name="Sandy" age={24} isStudent={true} />
       <Student name="Larry" /> */}
-      <UserGreeting isLoggedIn={true} username="EvertCode"/>
+      {/* UserGreeting - Conditional Rendering case */}
+      {/* <UserGreeting isLoggedIn={true} username="EvertCode"/>
       <UserGreeting isLoggedIn={false} username="hacker" />
-      <UserGreeting isLoggedIn={false} />
-
+      <UserGreeting isLoggedIn={false} /> */}
+      <List />
     </>
   );
 }
