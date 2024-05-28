@@ -1,28 +1,42 @@
-function List() {
-    const fruits = [
-    { id: 1, name: 'Apple', calories: 199 },
-    { id: 2, name: 'banana', calories: 299 },
-    { id: 3, name: 'Orange', calories: 399 },
-    { id: 4, name: 'Pineapple', calories: 150 },
-    { id: 5, name: 'coconut', calories: 100 }
-    ];
-    //fruits.sort();
-    //fruits.sort((a,b) => a.name.localeCompare(b.name)); //Order by name
-    //fruits.sort((a,b) => b.name.localeCompare(a.name)); //Reverse order by name
-    //fruits.sort((a,b) => a.calories - b.calories); //Order by calories
-    //fruits.sort((a,b) => b.calories - a.calories); //Reverse Order by calories
+import PropTypes from 'prop-types'
 
-    //const lowCalFruit = fruits.filter(fruit => fruit.calories < 160); //Filter using conditions
-    //const highCalFruit = fruits.filter(fruit => fruit.calories >= 160);
+function List(props) {
+    
+    //#beginregion many types of sorts
+    //items.sort();
+    //items.sort((a,b) => a.name.localeCompare(b.name)); //Order by name
+    //items.sort((a,b) => b.name.localeCompare(a.name)); //Reverse order by name
+    //items.sort((a,b) => a.calories - b.calories); //Order by calories
+    //items.sort((a,b) => b.calories - a.calories); //Reverse Order by calories
 
+    //const lowCalitem = items.filter(item => item.calories < 160); //Filter using conditions
+    //const highCalitem = items.filter(item => item.calories >= 160);
+    //#endredion
+    const category = props.category;
+    const itemList = props.items;
 
-    const ListItems = fruits.map(fruit => 
-        <li key={fruit.id}>
-            {fruit.name}: &nbsp; <b>{fruit.calories}</b>
-        </li>
-        )
+    const listItems = itemList.map(item => <li key={item.id}>
+                                            {item.name}: &nbsp; 
+                                            <b>{item.calories}</b></li>)
 
-    return (<ol>{ListItems}</ol>);
+    return (<>
+    <h3 className="list-category">{category}</h3>
+    <ol className="list-items">{listItems}</ol>
+    </>);
+}
+
+List.propTypes = {
+    category: PropTypes.string,
+    items: PropTypes.arrayOf(PropTypes.shape({ 
+        id: PropTypes.number,
+        name: PropTypes.string,
+        calories: PropTypes.number
+    })),
+}
+
+List.defaultProps = {
+    category: "Category",
+    items: [],
 }
 
 export default List
